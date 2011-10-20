@@ -1,8 +1,16 @@
 <div id="search" class="lift:surround?with=default_template;at=searchContainer">
     <div>
-        <form class="lift:form.ajax">
-            <input class="lift:searchInput" id="search_input"/>
-            <input type="submit" value="Go"/>
-        </form>
+        <div class="lift:SearchInput.doSearch?form=post">
+            <input class="lift:searchInput.setTerms" id="search_input"/>
+            <input type="submit" value="Go" id="search_button"/>
+        </div>
     </div>
+</div>
+
+<div id="guTravel" class="lift:surround?with=default_template;at=guTravelContainer">
+  <!-- the behavior of the div -->
+  <div class="lift:Comet?type=GuTravel">
+      <div class="feedback">
+      </div>
+  </div>
 </div>

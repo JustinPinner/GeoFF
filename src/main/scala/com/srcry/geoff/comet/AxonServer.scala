@@ -1,14 +1,16 @@
 package com.srcry.geoff
+package comet
 
-import net.liftweb.actor.LiftActor
-import net.liftweb.http.ListenerManager
+import net.liftweb._
+import net.liftweb.actor._
+import net.liftweb.http._
 
 /*
  * Created by Justin Pinner.
  * On: 19/10/2011 at: 21:23
 */
 
-object AxonServer extends LiftActor with ListenerManager {
+object AxonServer extends LiftActor with ListenerManager with Logging {
   // private state
   private var msgs = Vector("Welcome")
 
@@ -27,7 +29,15 @@ object AxonServer extends LiftActor with ListenerManager {
    * messages, and then update all the listeners.
    */
   override def lowPriority = {
-    case s: String => msgs :+= s
+    case s: String => {
+      log.info("Received %s" format(s))
+      msgs :+= s
+    }
+    case (UserAction.searchClick, searchTerms: String) => {
+      log.info("Received searchClick and %s" format(searchTerms))
+      msgs :+= "Search for %s" format(searchTerms)
+    }
+    log.info("Updating Listeners...")
     updateListeners()
   }
 }

@@ -1,15 +1,17 @@
 package com.srcry.geoff
+package snippet
 
 import net.liftweb.http.{CometListener, CometActor}
 import net.liftweb.util.ClearClearable
+import comet.AxonServer
 
-class GuTravel extends CometActor with CometListener {
+object GuTravel extends CometActor with CometListener with Logging {
   // private state
-  private var msgs: Vector[String] = Vector()
+  private var msgs: Vector[String] = Vector("Hi")
 
   /**
    * When the component is instantiated, register as
-   * a listener with the ChatServer
+   * a listener with the AxonServer
    */
   def registerWith = AxonServer
 
@@ -21,7 +23,14 @@ class GuTravel extends CometActor with CometListener {
    * cause changes to be sent to the browser.
    */
   override def lowPriority = {
-    case v: Vector[String] => msgs = v
+    case v: Vector[String] => {
+      log.info("Heard %s" format v.toString)
+      msgs = v
+    }
+    case s: String => {
+      log.info("Heard %s" format s)
+      msgs = Vector(s)
+    }
     reRender()
   }
 
