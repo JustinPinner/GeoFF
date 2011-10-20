@@ -1,11 +1,10 @@
 package com.srcry.geoff
-package snippet
+package comet
 
 import net.liftweb.http.{CometListener, CometActor}
 import net.liftweb.util.ClearClearable
-import comet.AxonServer
 
-object GuTravel extends CometActor with CometListener with Logging {
+class GuTravel extends CometActor with CometListener with Logging {
   // private state
   private var msgs: Vector[String] = Vector("Hi")
 
@@ -26,17 +25,19 @@ object GuTravel extends CometActor with CometListener with Logging {
     case v: Vector[String] => {
       log.info("Heard %s" format v.toString)
       msgs = v
+      reRender()
     }
     case s: String => {
       log.info("Heard %s" format s)
       msgs = Vector(s)
+      reRender()
     }
-    reRender()
   }
 
   /**
    * Put the messages in the li elements and clear
    * any elements that have the clearable class.
    */
-  def render = "li *" #> msgs & ClearClearable
+  def render = ".feedback *" #> msgs & ClearClearable
+  
 }

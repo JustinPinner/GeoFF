@@ -1,16 +1,51 @@
-<div id="search" class="lift:surround?with=default_template;at=searchContainer">
-    <div>
-        <div class="lift:SearchInput.doSearch?form=post">
-            <input class="lift:searchInput.setTerms" id="search_input"/>
-            <input type="submit" value="Go" id="search_button"/>
-        </div>
+<div class="lift:surround?with=default_template;at=content">
+
+    <!-- search box -->
+    <div class="searchBar">
+        <div class="lift:embed?what=search"></div>
     </div>
+
+    <!-- crude but quick... create a 3 x 3 table for snippet containers -->
+    <div class="3x3ContentBody">
+        <table>
+            <tr>
+                <td>
+                    <div class="lift:embed?what=gu_travel"></div>
+                </td>
+                <td>
+                    <span id="soma12Container"></span>
+                </td>
+                <td>
+                    <span id="guContentApiContainer"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span id="soma21Container"></span>
+                </td>
+                <td>
+                    <span id="soma22Container"></span>
+                </td>
+                <td>
+                    <span id="soma23Container"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span id="fbContainer"></span>
+                </td>
+                <td>
+                    <span id="soma32Container"></span>
+                </td>
+                <td>
+                    <span id="twContainer"></span>
+                </td>
+            </tr>
+        </table>
+    </div>
+
 </div>
 
-<div id="guTravel" class="lift:surround?with=default_template;at=guTravelContainer">
-  <!-- the behavior of the div -->
-  <div class="lift:Comet?type=GuTravel">
-      <div class="feedback">
-      </div>
-  </div>
-</div>
+
+
+
