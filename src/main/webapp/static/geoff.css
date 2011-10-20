@@ -1,0 +1,28 @@
+.advert-health-report {
+    border-bottom: 1px solid #CCC;
+    overflow: hidden;
+    padding: 0 0 1em 0;
+}
+
+.time {
+    font-variant: small-caps;
+    color: #000000;
+    font-size: 80%;
+}
+
+.advert-preflight-status {
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+#healthy {
+    background-color: #adff2f;
+}
+
+#unwell {
+    background-color: orange;
+}
+
+#dead {
+    background-color: #ff4500;
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+        xmlns:lift="http://liftweb.net/">
+<html>
+<head>
+    <title>GeoFF</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+	<script>
+    $(function() {
+		$( "#datepicker" ).datepicker({ dateFormat: 'dd/mm/yy' });
+	});
+	</script>
+    <link type="text/css" href="/static/geoff.css" rel="stylesheet" />
+    <link type="text/css" href="/static/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="wrapper">
+
+        <!-- search box -->
+        <div class="searchBar">
+            <span id="searchContainer"></span>
+        </div>
+
+        <!-- crude but quick... create a 3 x 3 table for snippet containers -->
+        <div class="3x3ContentBody">
+            <table>
+                <tr>
+                    <td>
+                        <span id="guTravelContainer"></span>
+                    </td>
+                    <td>
+                        <span id="soma12Container"></span>
+                    </td>
+                    <td>
+                        <span id="guContentApiContainer"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span id="soma21Container"></span>
+                    </td>
+                    <td>
+                        <span id="soma22Container"></span>
+                    </td>
+                    <td>
+                        <span id="soma23Container"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span id="fbContainer"></span>
+                    </td>
+                    <td>
+                        <span id="soma32Container"></span>
+                    </td>
+                    <td>
+                        <span id="twContainer"></span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+    <!-- footer -->
+    <div class="footerBar">
+
+    </div>
+
+</body>
+</html>
