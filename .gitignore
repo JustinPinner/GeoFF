@@ -1,0 +1,9 @@
+.classpath
+.idea/
+.idea_modules/
+.project
+project/plugins/project/target/
+project/plugins/target/
+project/target/
+target/
+
