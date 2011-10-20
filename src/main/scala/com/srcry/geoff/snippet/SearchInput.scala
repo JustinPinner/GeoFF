@@ -1,7 +1,11 @@
 package com.srcry.geoff
+package snippet
 
-import net.liftweb.http.SHtml
-import net.liftweb.http.js.JsCmds.SetValById
+import net.liftweb._
+import net.liftweb.http._
+import net.liftweb.http.js._
+import net.liftweb.http.js.JsCmds._
+import net.liftweb.http.js.JE._
 
 /**
  * A snippet transforms input to output... it transforms
@@ -25,6 +29,6 @@ object SearchInput {
    */
   def render = SHtml.onSubmit(s => {
     AxonServer ! s
-    SetValById("chat_in", "")
+    SetValById("search_input", "")
   })
 }
