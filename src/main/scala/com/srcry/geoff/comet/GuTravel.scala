@@ -1,21 +1,11 @@
 package com.srcry.geoff
 package comet
 
-import net.liftweb.http.{CometListener, CometActor}
 import net.liftweb.util.ClearClearable
 
-class GuTravel extends CometActor with CometListener with Logging {
-  // private state
-  private var msgs: Vector[String] = Vector("Hi")
-
+class GuTravel extends Soma {
   /**
-   * When the component is instantiated, register as
-   * a listener with the AxonServer
-   */
-  def registerWith = AxonServer
-
-  /**
-   * The CometActor is an Actor, so it processes messages.
+   * Soma provides the CometActor and CometListener message processing.
    * In this case, we're listening for Vector[String],
    * and when we get one, update our private state
    * and reRender() the component.  reRender() will
@@ -38,6 +28,6 @@ class GuTravel extends CometActor with CometListener with Logging {
    * Put the messages in the li elements and clear
    * any elements that have the clearable class.
    */
-  def render = ".feedback *" #> msgs & ClearClearable
+  override def render = ".feedback *" #> msgs & ClearClearable
   
 }
