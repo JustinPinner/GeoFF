@@ -1,5 +1,4 @@
-package com.srcry.geoff
-package comet
+package com.srcry.geoff.comet
 
 import net.liftweb.util.ClearClearable
 
@@ -11,7 +10,7 @@ class GuTravel extends Soma {
    * and reRender() the component.  reRender() will
    * cause changes to be sent to the browser.
    */
-  override def lowPriority = {
+  override def lowPriority = {  
     case v: Vector[String] => {
       log.info("Heard %s" format v.toString)
       msgs = v
