@@ -3,6 +3,7 @@ package com.srcry.geoff
 import org.apache.commons.httpclient.methods.GetMethod
 import io.Source
 import org.apache.commons.httpclient.HttpClient
+import java.net.URLEncoder
 
 /*
  * Created by Justin Pinner.
@@ -11,20 +12,20 @@ import org.apache.commons.httpclient.HttpClient
 
 case class HttpResponse(body: String, statusCode: Int, statusMessage: String)
 
-class GeoPlanetHttpClient extends Logging {
+object GeoPlanetHttpClient extends Logging {
 
   val httpClient = new HttpClient
   val baseUrl: String = "http://where.yahooapis.com/v1/"
   val staticParams: String = "appid=000000&format=json&view=long"
 
   def lookupPlaces(searchTerms: String): HttpResponse = {
-    val url = baseUrl + "places.q(" + searchTerms + ")?" + staticParams
+    val url = baseUrl + "places.q(" + URLEncoder.encode(searchTerms) + ")?" + staticParams
     log.info("Calling url %s" format(url))
     GET(url)
   }
 
   def lookupPlaceTypes(searchTerms: String): HttpResponse = {
-    val url = baseUrl + "placetypes/" + searchTerms + "?" + staticParams
+    val url = baseUrl + "placetypes/" + URLEncoder.encode(searchTerms) + "?" + staticParams
     log.info("Calling url %s" format(url))
     GET(url)
   }

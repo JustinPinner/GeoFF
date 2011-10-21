@@ -1,6 +1,5 @@
 package com.srcry.geoff.comet
 
-import net.liftweb.http.{CometListener, CometActor}
 import com.srcry.geoff.Logging
 
 /*
@@ -13,9 +12,9 @@ abstract class Soma extends AxonSubscription with Logging {
   // Base class for soma objects - provides common functionality
 
   // private state
-  var msgs: Vector[String] = Vector("Hello")
+  var msgs: Vector[String]
 
-  def sendMessage(message: Vector[String]) = {
+  def sendMessage(message: Vector[String]) {
     AxonServer ! message
   }
 

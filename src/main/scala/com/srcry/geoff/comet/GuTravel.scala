@@ -1,25 +1,19 @@
 package com.srcry.geoff.comet
 
 import net.liftweb.util.ClearClearable
+import com.srcry.geoff.GeoPlanetHttpClient
 
 class GuTravel extends Soma {
-  /**
-   * Soma provides the CometActor and CometListener message processing.
-   * In this case, we're listening for Vector[String],
-   * and when we get one, update our private state
-   * and reRender() the component.  reRender() will
-   * cause changes to be sent to the browser.
-   */
-  override def lowPriority = {  
+
+  override var msgs: Vector[String] = Vector("")
+  
+   override def lowPriority = {
     case v: Vector[String] => {
-      log.info("Heard %s" format v.toString)
-      msgs = v
-      reRender()
-    }
-    case s: String => {
-      log.info("Heard %s" format s)
-      msgs = Vector(s)
-      reRender()
+      if (v.last.toString.length() > 0) {
+        log.info("Heard: %s" format v.last.toString)
+        msgs :+= GeoPlanetHttpClient.lookupPlaces(v.last.toString).toString
+        reRender()
+      }
     }
   }
 
@@ -27,6 +21,6 @@ class GuTravel extends Soma {
    * Put the messages in the li elements and clear
    * any elements that have the clearable class.
    */
-  override def render = ".feedback *" #> msgs & ClearClearable
+  override def render = ".gu_travel_feedback *" #> msgs & ClearClearable
   
 }

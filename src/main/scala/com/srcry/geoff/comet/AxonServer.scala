@@ -12,7 +12,7 @@ import net.liftweb.http._
 
 object AxonServer extends LiftActor with ListenerManager with Logging {
   // private state
-  private var msgs = Vector("Welcome")
+  private var msgs = Vector("")
 
   /**
    * When we update the listeners, what message do we send?
@@ -31,13 +31,19 @@ object AxonServer extends LiftActor with ListenerManager with Logging {
   override def lowPriority = {
     case s: String => {
       log.info("Received %s" format(s))
-      msgs :+= s
+      if (s.length() > 0) {
+        msgs :+= s
+        log.info("Updating Listeners...")
+        updateListeners()
+      }
     }
     case (UserAction.searchClick, searchTerms: String) => {
       log.info("Received searchClick and %s" format(searchTerms))
-      msgs :+= "Search for %s" format(searchTerms)
+      if (searchTerms.length() > 0) {
+        msgs :+= searchTerms
+        log.info("Updating Listeners...")
+        updateListeners()
+      }
     }
-    log.info("Updating Listeners...")
-    updateListeners()
   }
 }
