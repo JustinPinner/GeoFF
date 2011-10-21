@@ -7,7 +7,9 @@ import org.slf4j.LoggerFactory
  * On: 20/10/2011 at: 16:46
 */
 
-trait Logging {
+case class HttpResponse(body: String, statusCode: Int, statusMessage: String)
+
+trait  Logging {
   var log = LoggerFactory.getLogger(getClass)
 
 }

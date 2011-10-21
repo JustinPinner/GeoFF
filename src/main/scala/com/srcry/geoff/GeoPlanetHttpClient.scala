@@ -9,7 +9,6 @@ import org.apache.commons.httpclient.HttpClient
  * On: 21/10/2011 at: 10:29
 */
 
-case class HttpResponse(body: String, statusCode: Int, statusMessage: String)
 
 class GeoPlanetHttpClient extends Logging {
 
@@ -34,17 +33,17 @@ class GeoPlanetHttpClient extends Logging {
 
     headers.foreach { case (key, value) => method.addRequestHeader(key, value) }
 
-//    httpClient.executeMethod(method)
-//
-//    val statusLine = method.getStatusLine
-//    val responseBody = Option(method.getResponseBodyAsStream)
-//            .map(Source.fromInputStream(_).mkString)
-//            .getOrElse("")
-//
-//    method.releaseConnection()
+    httpClient.executeMethod(method)
 
-    //new HttpResponse(responseBody, statusLine.getStatusCode, statusLine.getReasonPhrase)
-    new HttpResponse("", 0, "Testing!")
+    val statusLine = method.getStatusLine
+    val responseBody = Option(method.getResponseBodyAsStream)
+            .map(Source.fromInputStream(_).mkString)
+            .getOrElse("")
+
+    method.releaseConnection()
+
+    new HttpResponse(responseBody, statusLine.getStatusCode, "Blah")
+    //new HttpResponse("", 0, "Testing!")
 
   }
 
