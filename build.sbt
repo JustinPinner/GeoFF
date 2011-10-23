@@ -45,6 +45,13 @@ libraryDependencies ++= {
     )
 }
 
+libraryDependencies ++= Seq (
+  "com.gu" %% "configuration" % "3.6",
+  "com.gu.openplatform" %% "content-api-client" % "1.12",
+  "com.gu" %% "opta" % "3.1",
+  "commons-lang" % "commons-lang" % "2.4"
+)
+
 // and use this version of jetty for jetty run
 libraryDependencies += "org.eclipse.jetty" % "jetty-webapp" % "7.3.1.v20110307" % "jetty"
 
