@@ -8,11 +8,11 @@ organization := "com.srcry"
 
 scalaVersion := "2.9.0-1"
 
-resolvers in ThisBuild ++= Seq(
-  "Guardian Github Releases" at "http://guardian.github.com/maven/repo-releases",
-  "Guardian Github Snapshots" at "http://guardian.github.com/maven/repo-snapshots",
-  "Guardian Nexus" at "http://nexus.gudev.gnl:8081/nexus/content/groups/public"
-)
+//resolvers in ThisBuild ++= Seq(
+//  "Guardian Github Releases" at "http://guardian.github.com/maven/repo-releases",
+//  "Guardian Github Snapshots" at "http://guardian.github.com/maven/repo-snapshots",
+//  "Guardian Nexus" at "http://nexus.gudev.gnl:8081/nexus/content/groups/public"
+//)
 
 // include web plugin settings in this project
 seq(webSettings :_*)
@@ -46,9 +46,9 @@ libraryDependencies ++= {
 }
 
 libraryDependencies ++= Seq (
-  "com.gu" %% "configuration" % "3.6",
-  "com.gu.openplatform" %% "content-api-client" % "1.12",
-  "com.gu" %% "opta" % "3.1",
+//  "com.gu" %% "configuration" % "3.6",
+//  "com.gu.openplatform" %% "content-api-client" % "1.12",
+//  "com.gu" %% "opta" % "3.1",
   "commons-lang" % "commons-lang" % "2.4"
 )
 

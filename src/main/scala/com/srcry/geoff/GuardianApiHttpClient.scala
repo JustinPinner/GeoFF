@@ -3,15 +3,16 @@ package com.srcry.geoff
 import org.apache.commons.httpclient.HttpClient
 import org.apache.commons.httpclient.methods.GetMethod
 import io.Source
+import java.net.URLEncoder
 
-class GuardianApiHttpClient extends Logging  {
+object GuardianApiHttpClient extends Logging  {
 
   val httpClient = new HttpClient
   val baseUrl: String = "http://content.guardianapis.com/search?q=%s"
   val staticParams: String = "&tag=travel&format=json"
 
-  def lookupPlaces(searchTerms: String): HttpResponse = {
-      val url = baseUrl.format(searchTerms) + staticParams
+  def lookupArticles(searchTerms: String): HttpResponse = {
+      val url = baseUrl.format(URLEncoder.encode(searchTerms)) + staticParams
       log.info("Calling url %s" format(url))
       GET(url)
   }

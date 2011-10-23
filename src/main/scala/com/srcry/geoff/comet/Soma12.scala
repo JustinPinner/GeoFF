@@ -10,8 +10,9 @@ class Soma12 extends Soma {
   override def lowPriority = {
     case v: Vector[String] => {
       if (v.last.length() > 0) {
-        log.info("Heard: %s" format v.toString)
-        msgs :+= GeoPlanetHttpClient.lookupPlaceTypes(v.last.toString).toString
+        log.info("Heard (Vector[String]): %s" format v.last.toString)
+        //msgs :+= GeoPlanetHttpClient.lookupPlaceTypes(v.last.toString).toString
+        msgs :+= "Soma12 says hello"
         reRender()
       }
     }

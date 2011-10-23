@@ -1,7 +1,7 @@
 package com.srcry.geoff.comet
 
 import net.liftweb.util.ClearClearable
-import com.srcry.geoff.GeoPlanetHttpClient
+import com.srcry.geoff.{GuardianApiHttpClient, GeoPlanetHttpClient}
 
 class GuTravel extends Soma {
 
@@ -10,8 +10,8 @@ class GuTravel extends Soma {
    override def lowPriority = {
     case v: Vector[String] => {
       if (v.last.toString.length() > 0) {
-        log.info("Heard: %s" format v.last.toString)
-        msgs :+= GeoPlanetHttpClient.lookupPlaces(v.last.toString).toString
+        log.info("Heard (Vector[String]): %s" format v.last.toString)
+        msgs :+= GuardianApiHttpClient.lookupArticles(v.last.toString).toString
         reRender()
       }
     }
